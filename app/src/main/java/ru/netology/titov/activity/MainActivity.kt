@@ -15,6 +15,7 @@ import ru.netology.titov.viewmodel.PostViewModel
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val binding = ActivityMainBinding.inflate(layoutInflater)
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
                     viewModel.changeContent(it)
                     viewModel.saveContent()
                 }
+
             }
 
         val adapter = PostAdapter(

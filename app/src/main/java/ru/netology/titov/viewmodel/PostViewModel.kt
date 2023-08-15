@@ -38,8 +38,11 @@ class PostViewModel : ViewModel() {
     }
 
     fun editContent(post: Post) {
-        edited.value = post
+        edited.value?.let {
+            edited.value = post
+        }
     }
+
 
     fun changeContent(content: String) {
         edited.value?.let {
