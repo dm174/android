@@ -1,6 +1,7 @@
 package ru.netology.titov.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
@@ -16,6 +17,7 @@ interface PostEventListener {
     fun onRemove(post: Post)
     fun onLike(post: Post)
     fun onShare(post: Post)
+    fun onVideo(post: Post)
 }
 
 class PostAdapter(
@@ -52,10 +54,17 @@ class PostViewHolder(
 
             like.text=FormatLikeShare.counterDecimal(post.likeNum)
             share.text = FormatLikeShare.counterDecimal(post.shareNum)
+            if (post.video == null) {
+                binding.playVideoGroup.visibility = View.GONE
+            } else {
+                binding.playVideoGroup.visibility = View.VISIBLE
+            }
+
             like.setOnClickListener { listener.onLike(post)
                 }
             share.setOnClickListener { listener.onShare(post) }
-
+            play.setOnClickListener { listener.onVideo(post) }
+            backgroundVideo.setOnClickListener { listener.onVideo(post) }
             menu.setOnClickListener {
                 PopupMenu(it.context, it).apply {
                     inflate(R.menu.post_menu)
