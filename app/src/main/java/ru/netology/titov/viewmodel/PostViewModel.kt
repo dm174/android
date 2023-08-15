@@ -36,7 +36,9 @@ class PostViewModel : ViewModel() {
             edited.value = emptyPost
         }
     }
-
+    fun clearEdited() {
+        edited.value  = emptyPost
+    }
     fun editContent(post: Post) {
         edited.value?.let {
             edited.value = post

@@ -35,8 +35,9 @@ class MainActivity : AppCompatActivity() {
                 text?.let {
                     viewModel.changeContent(it)
                     viewModel.saveContent()
-                }
 
+                }
+                viewModel.clearEdited() // Очистка поля edited
             }
 
         val adapter = PostAdapter(
