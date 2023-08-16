@@ -1,8 +1,7 @@
 package ru.netology.titov.repository
 
 import android.content.Context
-import android.graphics.drawable.ColorDrawable
-import android.os.Bundle
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
@@ -17,17 +16,17 @@ class PostRepositoryInMemory   (  private val context: Context
     private val gson = Gson()
     private val prefs = context.getSharedPreferences("repo", Context.MODE_PRIVATE)
     private val type = TypeToken.getParameterized(List::class.java, Post::class.java).type
-    private val key = "posts"
+   // private val key = "posts"
     private var nextId = 1L
     private var nextIdKey = "next_id"
-    private var nextIdLike = "like_id"
+  //  private val nextIdLike = "like_id"
     private var posts = emptyList<Post>()
     private val data = MutableLiveData(posts)
     private val filename = "posts.json"
 
     //Ввел данные  времени
-    val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")
-    val current = LocalDateTime.now().format(formatter)
+    private val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")
+    private  val current = LocalDateTime.now().format(formatter)
 
 
     init {
