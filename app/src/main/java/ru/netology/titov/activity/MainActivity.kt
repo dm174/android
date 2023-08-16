@@ -1,5 +1,6 @@
 package ru.netology.titov.activity
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -17,6 +18,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+        val prefs= getPreferences(Context.MODE_PRIVATE)
+        val result=prefs.getString("key",null)
+
+
+//
+        println(result)
+
+
+
+        //
         setContentView(R.layout.activity_main)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -55,6 +66,8 @@ class MainActivity : AppCompatActivity() {
 
                 override fun onLike(post: Post) {
                     viewModel.likeById(post.id)
+
+
                 }
 
                 override fun onShare(post: Post) {
@@ -65,6 +78,7 @@ class MainActivity : AppCompatActivity() {
                     val intentVideo = Intent(Intent.ACTION_VIEW, Uri.parse(post.video))
                     startActivity(intentVideo)
                 }
+
             }
         )
 

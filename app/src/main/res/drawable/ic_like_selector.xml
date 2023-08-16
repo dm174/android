@@ -3,7 +3,9 @@
     <item android:drawable="@drawable/ic_baseline_liked"
         android:state_checked="true"
 />
-    <item android:drawable="@drawable/ic_baseline_like"/>
+
+    <item android:drawable="@drawable/ic_baseline_like"
+    android:state_checked="false"/>
 
 
 </selector>

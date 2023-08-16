@@ -18,6 +18,8 @@ interface PostEventListener {
     fun onLike(post: Post)
     fun onShare(post: Post)
     fun onVideo(post: Post)
+
+
 }
 
 class PostAdapter(
@@ -48,9 +50,9 @@ class PostViewHolder(
             author.text = post.author
             published.text = post.published
             content.text = post.content
+
             //likeNum.text = FormatLikeShare.counterDecimal(post.likeNum)
             //shareNum.text = FormatLikeShare.counterDecimal(post.shareNum)
-
 
             like.text=FormatLikeShare.counterDecimal(post.likeNum)
             share.text = FormatLikeShare.counterDecimal(post.shareNum)
@@ -60,7 +62,13 @@ class PostViewHolder(
                 binding.playVideoGroup.visibility = View.VISIBLE
             }
 
-            like.setOnClickListener { listener.onLike(post)
+
+
+
+
+            like.setOnClickListener {
+             listener.onLike(post)
+
                 }
             share.setOnClickListener { listener.onShare(post) }
             play.setOnClickListener { listener.onVideo(post) }
