@@ -18,7 +18,7 @@ class PostRepositoryInMemory   (  private val context: Context
     private val type = TypeToken.getParameterized(List::class.java, Post::class.java).type
    // private val key = "posts"
     private var nextId = 1L
-    private var nextIdKey = "next_id"
+    //private var nextIdKey = "next_id"
   //  private val nextIdLike = "like_id"
     private var posts = emptyList<Post>()
     private val data = MutableLiveData(posts)
@@ -26,7 +26,7 @@ class PostRepositoryInMemory   (  private val context: Context
 
     //Ввел данные  времени
     private val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")
-    private  val current = LocalDateTime.now().format(formatter)
+    //private  val current = LocalDateTime.now().format(formatter)
 
 
     init {
