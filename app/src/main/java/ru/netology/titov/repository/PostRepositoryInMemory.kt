@@ -36,7 +36,8 @@ class PostRepositoryInMemory   (  private val context: Context
                 posts = gson.fromJson(it, type)
                 data.value = posts
             }
-            nextId=prefs.getLong(nextIdKey,nextId)
+          //  nextId=prefs.getLong(nextIdKey,nextId)
+            nextId = 1 + (posts.maxOfOrNull { it.id } ?: 0)
 
         } else {
             data.value = posts
@@ -92,12 +93,13 @@ class PostRepositoryInMemory   (  private val context: Context
             // TODO: remove hardcoded author & published
             posts = listOf(
                 post.copy(
-                    id = nextId++,
+                    id =prefs.getLong("nextId", 1),
                     author = "Me",
                     liked = false,
-                    published = current
+                    published =  LocalDateTime.now().format(formatter)
                 )
             ) + posts
+            prefs.edit().putLong("nextId", ++nextId).apply()
             data.value = posts
             sync()
             return

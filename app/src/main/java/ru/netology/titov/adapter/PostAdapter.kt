@@ -26,28 +26,33 @@ class PostAdapter(
     private val listener: PostEventListener
 ) : ListAdapter<Post, PostViewHolder>(PostDiffCallback()) {
 
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val binding = CardPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return PostViewHolder(
             binding,
-            listener,
+            listener
         )
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val post = getItem(position)
         holder.bind(post)
+
     }
 }
 
 class PostViewHolder(
     private val binding: CardPostBinding,
-    private val listener: PostEventListener,
+    private val listener: PostEventListener
+
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(post: Post) {
         binding.apply {
             author.text = post.author
+
             published.text = post.published
             content.text = post.content
 
@@ -55,6 +60,7 @@ class PostViewHolder(
             //shareNum.text = FormatLikeShare.counterDecimal(post.shareNum)
 
             like.text=FormatLikeShare.counterDecimal(post.likeNum)
+            like.isChecked = post.liked //Если like = true, то кнопка считается нажатой
             share.text = FormatLikeShare.counterDecimal(post.shareNum)
             if (post.video == null) {
                 binding.playVideoGroup.visibility = View.GONE
@@ -97,6 +103,7 @@ class PostViewHolder(
             }
         }
     }
+
 }
 
 class PostDiffCallback : DiffUtil.ItemCallback<Post>() {
