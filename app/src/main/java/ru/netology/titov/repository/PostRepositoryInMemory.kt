@@ -39,6 +39,7 @@ class PostRepositoryInMemory   (  private val context: Context
             nextId=prefs.getLong(nextIdKey,nextId)
 
         } else {
+            data.value = posts
             sync()
         }
     }
